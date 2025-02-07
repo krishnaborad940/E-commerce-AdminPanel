@@ -1,0 +1,35 @@
+<%- include('../layout/header') %>
+<div class="card-body" style="margin-left: 300px; background-color: white;margin-top: 20px; width: 1000px;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+       
+          <th>Name</th>
+          <th>status</th>
+    <th>action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% Viewcat.map((v,i)=>{ %>
+      <tr class="align-middle">
+   
+          <td><%= v.category %></td>
+          <td>
+          <% if(v.Status){ %>
+            <a href="/category/ActiveStatus/?catId=<%= v.id %>&Status=true" class="btn btn-success">Active</a>
+
+         <%  } else { %> 
+          <a href="/category/DeActiveStatus/?catId=<%= v.id %>&Status=false" class="btn btn-danger">DeActive</a>
+
+          <% }%></td>
+         <td><a href="/category/deletecate/?id=<%= v.id %>"><i class="la la-trash"></i></a></td>
+         
+        </tr>
+ <%   }) %>
+       
+       
+       
+      </tbody>
+    </table>
+  </div>

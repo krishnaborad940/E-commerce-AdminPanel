@@ -1,0 +1,255 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
+    <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
+    <meta name="author" content="ThemeSelect">
+    <title>Dashboard - Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit</title>
+    <link rel="apple-touch-icon" href="/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/vendors.css">
+    <link rel="stylesheet" type="text/css" href="/vendors/css/charts/chartist.css">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN CHAMELEON  CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/app-lite.css">
+    <!-- END CHAMELEON  CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="/css/pages/dashboard-ecommerce.css">
+    <!-- END Page Level CSS-->
+    <!-- BEGIN Custom CSS-->
+    <!-- END Custom CSS-->
+  </head>
+  <style>
+    .rotate {
+  transform: rotate(180deg);
+  transition: transform 1s ease-in-out;
+}
+
+    .nav-treeview {
+  display: none; /* Hide submenus by default */
+  padding-left: 20px; /* Indent submenu */
+}
+.menu-open > .nav-treeview {
+  display: block !important; /* Show submenu when open */
+}
+.nav-arrow {
+  transition: transform 1ms ease-in-out;
+}
+.menu-open > a .nav-arrow {
+  transform: rotate(90deg); /* Rotate arrow when menu is open */
+}
+
+  </style>
+    <body  class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar">
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
+      <div class="navbar-wrapper">
+        <div class="navbar-container content">
+          <div class="collapse navbar-collapse show" id="navbar-mobile">
+            <ul class="nav navbar-nav mr-auto float-left">
+              <li class="nav-item d-block d-md-none"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
+              <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
+              <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
+                <ul class="dropdown-menu">
+                  <li class="arrow_box">
+                    <form>
+                      <div class="input-group search-box">
+                        <div class="position-relative has-icon-right full-width">
+                          <input class="form-control" id="search" type="text" placeholder="Search here..." />
+                          <div class="form-control-position navbar-search-close"><i class="ft-x" >   </i></div>
+                        </div>
+                      </div>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav float-right">         
+              <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language"></span></a>
+                <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                  <div class="arrow_box"><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> Chinese</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-ru"></i> Russian</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-es"></i> Spanish</a></div>
+                </div>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav float-right">
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-mail">             </i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="arrow_box_right"><a class="dropdown-item" href="#"><i class="ft-book"></i> Read Mail</a><a class="dropdown-item" href="#"><i class="ft-bookmark"></i> Read Later</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Mark all Read       </a></div>
+                </div>
+              </li>
+             <li class="dropdown dropdown-user nav-item">
+  <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" style="display: flex; text-align: center;">
+    <span class="avatar avatar-online"><img src="<%= locals.user.Image %>" alt="avatar" /><i></i></span>
+    <h3><%= locals.user.name %></h3>
+  </a>
+  <div class="dropdown-menu dropdown-menu-right">
+    <div class="arrow_box_right">
+      <a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="<%= locals.user.Image %>" alt="avatar" /><span class="user-name text-bold-700 ml-1"><%= locals.user.name.substr(0,7) %></span></span></a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="MyProfile"><i class="ft-user"></i> My Profile</a>
+      <a class="dropdown-item" href="changePassword"><i class="ft-mail"></i> Change Password</a>
+  
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/signOut"><i class="ft-power"></i> Logout</a>
+    </div>
+  </div>
+</li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" style="height: 100vh;">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">       
+          <li class="nav-item mr-auto">
+            <a class="navbar-brand" href="index.html">
+              <img class="brand-logo" alt="Logo" src="/images/logo/logo.png"/>
+              <h3 class="brand-text">Chameleon</h3>
+            </a>
+          </li>
+          <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
+        </ul>
+      </div>
+      
+      <div class="main-menu-content" style="height: 100vh;">
+        <ul class="navigation navigation-main" id="main-menu-navigation">
+    
+          <!-- Dashboard -->
+          <li class="active">
+            <a href="/dashboard"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a>
+          </li>
+    
+          <!-- Admin Dropdown -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#adminMenu">
+              <i class="ft-user"></i> <span class="menu-title">Admin</span> <i class="la la-angle-down float-right"></i>
+            </a>
+            <ul id="adminMenu" class="collapse">
+              <li><a href="form">➤ Add Admin</a></li>
+              <li><a href="viewAdmin">➤ View Admin</a></li>
+            </ul>
+          </li>
+    
+          <!-- Category Dropdown -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#categoryMenu">
+              <i class="la la-list"></i> <span class="menu-title">Category</span> <i class="la la-angle-down float-right"></i>
+            </a>
+            <ul id="categoryMenu" class="collapse">
+              <li><a href="/category">➤ Add Category</a></li>
+              <li><a href="/category/ViewCategory">➤ View Category</a></li>
+            </ul>
+          </li>
+    
+          <!-- Subcategory Dropdown -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#subCategoryMenu">
+              <i class="la la-cubes"></i> <span class="menu-title">Sub-Cat..</span> <i class="la la-angle-down float-right"></i>
+            </a>
+            <ul id="subCategoryMenu" class="collapse">
+              <li><a href="/SubCategory/">➤ Add Sub Category</a></li>
+              <li><a href="/SubCategory/viewSubCategory">➤ View Sub Category</a></li>
+            </ul>
+          </li>
+    
+          <!-- Extra Category Dropdown -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#extraCategoryMenu">
+              <i class="la la-plus-circle"></i> <span class="menu-title">Extra-cat...</span> <i class="la la-angle-down float-right"></i>
+            </a>
+            <ul id="extraCategoryMenu" class="collapse">
+              <li><a href="/ExtraCategory/">➤ Add Extra..</a></li>
+              <li><a href="/ExtraCategory/viewExtraCategory">➤ View Extra..</a></li>
+            </ul>
+          </li>
+    
+          <!-- Types Dropdown -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#typesMenu">
+              <i class="la la-tags"></i> <span class="menu-title">Types</span> <i class="la la-angle-down float-right"></i>
+            </a>
+            <ul id="typesMenu" class="collapse">
+              <li><a href="/Types/">➤ Add Types</a></li>
+              <li><a href="/Types/ViewTypes">➤ View Types</a></li>
+            </ul>
+          </li>
+
+          <!-- Brand -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#subCategoryMenu">
+              <i class="la la-cubes"></i> <span class="menu-title">Brand-Cat..</span> <i class="la la-angle-down float-right"></i>
+            </a>
+            <ul id="subCategoryMenu" class="collapse">
+              <li><a href="/Brand/">➤ Add Brand</a></li>
+              <li><a href="/Brand/ViewBrand">➤ View Brand</a></li>
+            </ul>
+          </li>   
+          
+           <!-- Product -->
+           <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#subCategoryMenu">
+              <i class="la la-cubes"></i> <span class="menu-title">Brand-Cat..</span> <i class="la la-angle-down float-right"></i>
+            </a>
+            <ul id="subCategoryMenu" class="collapse">
+              <li><a href="/Brand/">➤ Add Brand</a></li>
+              <li><a href="/Brand/ViewBrand">➤ View Brand</a></li>
+            </ul>
+          </li>  
+        </ul>
+      </div>
+    </div>
+    
+ 
+    
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery (AdminLTE requires it) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- AdminLTE Script -->
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<script>
+ $(document).ready(function () {
+  $(".nav-item > a").click(function (e) {
+    e.preventDefault(); // Default behavior rokna
+    e.stopPropagation(); // Event bubbling rokna
+
+    var $submenu = $(this).next(".collapse");
+
+    if ($submenu.is(":visible")) {
+      $submenu.slideUp();
+      $(this).find(".la-angle-down").removeClass("rotate");
+    } else {
+      $(".collapse").slideUp(); // Dusre open dropdown close kare
+      $(".la-angle-down").removeClass("rotate");
+      
+      $submenu.slideDown();
+      $(this).find(".la-angle-down").addClass("rotate");
+    }
+  });
+
+  // Yeh ensure karega ki page ke kahin aur click karne se dropdown band ho
+  $(document).click(function (e) {
+    if (!$(e.target).closest(".nav-item").length) {
+      $(".collapse").slideUp();
+      $(".la-angle-down").removeClass("rotate");
+    }
+  });
+});
+
+</script>
+  
+        </body>
+
+</html>

@@ -1,0 +1,25 @@
+<%- include('../layout/header') %>
+<div class="card-body" style="margin-left: 300px; background-color: white;margin-top: 20px; width: 1000px;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+       
+          <th>category</th>
+          <th>subCategory</th>
+          <th>status</th>
+    <th>action</th>
+        </tr>
+      </thead>
+<thead>
+  <% viewSubCate.map((v,i)=>{ %>
+    <th><%= v.categoryId.category %></th>
+    <th><%= v.subCategory %></th>
+    <th><%= v.status %></th>
+   <th> <a href="/SubCategory/deleteSubCate/?subId=<%= v.id %>">Delete</a></th>
+
+   
+    <% }) %>
+</thead>
+    
+    </table>
+  </div>

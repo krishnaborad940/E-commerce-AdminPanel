@@ -1,0 +1,47 @@
+<h1>hello</h1><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../layout/header') %>
+    <div class="row match-height" style="margin-left: 300px; margin-top: 20px;">
+        <div class="col-lg-6 col-md-12">
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+              <h4>Fill Out Your Details</h4>
+            </div>
+            <div class="card-block">
+                <div class="card-body">
+                  <form action="/subCategory/insertSubCategory" method="post" > 
+               
+                <div class="mb-3">
+                  <label for="exampleInputname" class="form-label">category Name</label>
+              
+               <select name="categoryId" id="">
+                <option value="">--select category--</option>
+                <% categoryData.map((v,i)=>{ %> 
+                  <option value="<%= v.id %>"><%= v.category %></option>
+                  <% }) %>
+              
+               </select>
+               <!-- sub category name -->
+                <h5 class="mt-3">Enter Category</h5>
+                <fieldset class="form-group">
+                  <input type="text" placeholder="Enter your Name" name="subCategory" class="form-control" />
+                </fieldset>
+                <!-- Submit Button -->
+                <fieldset class="form-group text-center">
+                  <input type="submit" class="btn btn-success w-100 mt-4" />
+                </fieldset>
+            </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
+        <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
+        <meta name="author" content="ThemeSelect">
+        <title>Dashboard - Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit</title>
+        <link rel="apple-touch-icon" href="/images/ico/apple-icon-120.png">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/ico/favicon.ico">
+        <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+        <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+        <!-- BEGIN VENDOR CSS-->
+        <link rel="stylesheet" type="text/css" href="/css/vendors.css">
+        <link rel="stylesheet" type="text/css" href="/vendors/css/charts/chartist.css">
+        <!-- END VENDOR CSS-->
+        <!-- BEGIN CHAMELEON  CSS-->
+        <link rel="stylesheet" type="text/css" href="/css/app-lite.css">
+        <!-- END CHAMELEON  CSS-->
+        <!-- BEGIN Page Level CSS-->
+        <link rel="stylesheet" type="text/css" href="/css/core/menu/menu-types/vertical-menu.css">
+        <link rel="stylesheet" type="text/css" href="/css/core/colors/palette-gradient.css">
+        <link rel="stylesheet" type="text/css" href="/css/pages/dashboard-ecommerce.css">
+        <!-- END Page Level CSS-->
+        <!-- BEGIN Custom CSS-->
+        <!-- END Custom CSS-->
+      </head>
+      <style>
+        /* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  margin-left: 500px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.card-header {
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+fieldset {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+button {
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.d-flex {
+  display: flex;
+  gap: 10px;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-3 {
+  gap: 15px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .card {
+    margin: 10px;
+  }
+}
+
+      </style>
+<body>
+    <%- include('./layout/header') %>
+    <div class="row match-height">
+        <div class="col-lg-6 col-md-12">
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+              <h4>Fill Out Your Details</h4>
+            </div>
+            <div class="card-block">
+                <div class="card-body">
+                  <form action="/insertAdmin" method="post" enctype="multipart/form-data"> 
+                <!-- Name -->
+                <h5 class="mt-3">Enter Your Name</h5>
+                <fieldset class="form-group">
+                  <input type="text" placeholder="Enter your Name" name="name" class="form-control" />
+                </fieldset>
+                <!-- Email -->
+                <h5 class="mt-3">Enter Your Email</h5>
+                <fieldset class="form-group">
+                  <input type="email" placeholder="Enter your Email" name="email" class="form-control" />
+                </fieldset>
+                <!-- Password -->
+                <h5 class="mt-3">Enter Your Password</h5>
+                <fieldset class="form-group">
+                  <input type="password" placeholder="Enter your Password" name="password" class="form-control" />
+                </fieldset>
+                <!-- Gender -->
+                <h5 class="mt-3">Select Your Gender</h5>
+                <fieldset class="form-group d-flex gap-3">
+                  <div>
+                    <input type="radio" name="gender" value="Male" id="male" />
+                    <label for="male">Male</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="gender" value="Female" id="female" />
+                    <label for="female">Female</label>
+                  </div>
+                </fieldset>
+                <!-- Hobby -->
+                <h5 class="mt-3">Select Your Hobby</h5>
+                <fieldset class="form-group d-flex flex-wrap gap-3">
+                  <div>
+                    <input type="checkbox" name="hobby" value="Reading" id="reading" />
+                    <label for="reading">Reading</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" name="hobby" value="Traveling" id="traveling" />
+                    <label for="traveling">Traveling</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" name="hobby" value="Dancing" id="dancing" />
+                    <label for="dancing">Dancing</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" name="hobby" value="Coding" id="coding" />
+                    <label for="coding">Coding</label>
+                  </div>
+                </fieldset>
+                <!-- City -->
+                <h5 class="mt-3">Select Your City</h5>
+                <fieldset class="form-group">
+                  <% const cities = ['Surat', 'Baroda', 'Ahmedabad', 'Rajkot', 'Mumbai', 'Vadodara']; %>
+                  <select name="cityName" class="form-control">
+                    <option value="">-- Select City --</option>
+                    <% cities.map((v) => { %>
+                      <option value="<%= v %>"><%= v %></option>
+                    <% }); %>
+                  </select>
+                </fieldset>
+                <!-- Image -->
+                <h5 class="mt-3">Upload Your Image</h5>
+                <fieldset class="form-group">
+                  <input class="form-control" type="file" name="Image" />
+                </fieldset>
+                <!-- Submit Button -->
+                <fieldset class="form-group text-center">
+                  <input type="submit" class="btn btn-success w-100 mt-4" />
+                </fieldset>
+            </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>
