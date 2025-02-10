@@ -20,6 +20,9 @@ app.use(cookieparser())
 app.use(express.static(path.join(__dirname,'assets')))
 app.use('/uploads/AdminImage',express.static(path.join(__dirname,'uploads/AdminImage')))
 
+app.use('/uploads/ProductImage',express.static(path.join(__dirname,'uploads/ProductImage')))
+
+
 app.use(session({
     name:'krishna',
     secret:"test",

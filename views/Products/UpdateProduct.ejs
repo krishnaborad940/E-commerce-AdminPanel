@@ -18,11 +18,13 @@
                   <form action="/Products/insertProducts" method="post" enctype="multipart/form-data" > 
                 <!-- category -->
                 <label for="exampleInputname" class="form-label">category Name</label>
-             
                 <select name="categoryId" id="">
                  <option value="">--select category--</option>
                  <% categoryData.map((v,i)=>{ %> 
-                   <option value="<%= v.id %>"><%= v.category %></option>
+                   <option value="<%= v.id %>" <% if (updatePro && updatePro.categoryId == v.id) { %> 
+                    selected 
+                  <% } %>
+                    ><%= v.category %></option>
                    <% }) %>
                
                 </select><br><br>
@@ -33,7 +35,7 @@
                 <select name="SubCategoryId" id="">
                  <option value="">--select category--</option>
                  <% SubCategoryData.map((v,i)=>{ %> 
-                   <option value="<%= v.id %>"><%= v.subCategory %></option>
+                   <option value="<%= v.id %>" <% if(updatePro.SubCategoryId==v.id){ %><%= 'selected' %><% } %> ><%= v.subCategory %></option>
                    <% }) %>
                
                 </select>

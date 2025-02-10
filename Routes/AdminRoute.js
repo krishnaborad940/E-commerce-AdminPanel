@@ -58,6 +58,7 @@ router.use('/ExtraCategory',require('../Routes/ExtraCategoryRouter'))
 router.use('/Types',require('../Routes/TypesRoutes'))
 router.use('/Brand',require('../Routes/BrandRoutes'))
 
+router.use('/Products',require('../Routes/ProductRoutes'))
 
 
 module.exports=router;
