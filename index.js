@@ -3,7 +3,12 @@ const express=require('express')
 const port=8004;
 const app=express()
 
-const db=require('./config/db')
+// const db=require('./config/db')
+const mongoose=require('mongoose')
+mongoose.connect('mongodb+srv://boradkrishna940:ZYQJTHTvp81MCI9X@first.7vdki.mongodb.net/project_AdminPanel')
+.then((res)=>console.log("db is connected"))
+.catch((err)=>console.log("db is not connect"))
+
 const path=require('path')
 
 const passport=require('passport')
