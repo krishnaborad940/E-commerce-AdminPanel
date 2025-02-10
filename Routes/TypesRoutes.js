@@ -3,10 +3,11 @@ const express=require('express')
 const TypesRouter=express.Router();
 
 const TypesCtl=require('../controllers/TypesController')
-TypesRouter.get('/',TypesCtl.AddTypes)
+const passport=require('../config/passport-local-stratergy')
+TypesRouter.get('/',passport.checkAuthUser,TypesCtl.AddTypes)
 
 TypesRouter.post('/insertTypesCategory',TypesCtl.insertTypesCategory)
-TypesRouter.get('/ViewTypes',TypesCtl.ViewTypes)
+TypesRouter.get('/ViewTypes',passport.checkAuthUser,TypesCtl.ViewTypes)
 
 TypesRouter.get('/deleteTypeCategory',TypesCtl.deleteTypeCategory)
 

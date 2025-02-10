@@ -3,7 +3,8 @@ const express=require('express')
 const Routers=express.Router();
 
 const CategoryCtl=require('../controllers/CategoryController');
-const passport = require('../config/passport-local-stratergy');
+// const passport = require('../config/passport-local-stratergy');
+const passport=require('../config/passport-local-stratergy')
 
 Routers.get('/',passport.checkAuthUser,CategoryCtl.AddCategory)
 

@@ -3,8 +3,10 @@ const express=require('express')
 const ExteraRouter=express.Router();
 
 const ExtraCategoryCtl=require('../controllers/ExtraCategoryController')
-ExteraRouter.get('/',ExtraCategoryCtl.AddExtraCategory)
-ExteraRouter.get('/viewExtraCategory',ExtraCategoryCtl.viewExtraCategory)
+const passport=require('../config/passport-local-stratergy')
+
+ExteraRouter.get('/',passport.checkAuthUser,ExtraCategoryCtl.AddExtraCategory)
+ExteraRouter.get('/viewExtraCategory',passport.checkAuthUser,ExtraCategoryCtl.viewExtraCategory)
 
 ExteraRouter.post('/insertExtraCategory',ExtraCategoryCtl.insertExtraCategory)
 
