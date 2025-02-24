@@ -8,7 +8,12 @@ module.exports.AddSubCategory=async(req,res)=>{
 
 module.exports.viewSubCategory=async(req,res)=>{
 
-    let viewSubCate=await SubCategory.find().populate('categoryId').exec()
+    let viewSubCate=await SubCategory.find({categoryId:req.body.categoryId})
+    var optiondata=`<option>--select--</option>`
+    categoryData.map((v,i)=>{ 
+        optiondata+=`<option value="${v.id}">${v.category}</option>`
+    })
+    return res.json(optiondata)
     return res.render("subCategory/viewSubCategory",{viewSubCate})
 }
 

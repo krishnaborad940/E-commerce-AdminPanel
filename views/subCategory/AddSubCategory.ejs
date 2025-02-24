@@ -20,7 +20,7 @@
                 <div class="mb-3">
                   <label for="exampleInputname" class="form-label">category Name</label>
               
-               <select name="categoryId" id="">
+               <select name="categoryId" id="categoryId" onchange="return getsubCategory()">
                 <option value="">--select category--</option>
                 <% categoryData.map((v,i)=>{ %> 
                   <option value="<%= v.id %>"><%= v.category %></option>
@@ -30,7 +30,7 @@
                <!-- sub category name -->
                 <h5 class="mt-3">Enter Category</h5>
                 <fieldset class="form-group">
-                  <input type="text" placeholder="Enter your Name" name="subCategory" class="form-control" />
+                  <input type="text" placeholder="Enter your Name" name="subCategory" id="SubCategoryId" class="form-control" />
                 </fieldset>
                 <!-- Submit Button -->
                 <fieldset class="form-group text-center">
@@ -45,3 +45,18 @@
     
 </body>
 </html>
+
+<script>
+  function getsubCategory(){
+    let catId=document.getElementById('categoryId').value
+    $.ajax({
+      url:'/SubCategory/',
+      method:"POST",
+      data:{
+        categoryId:catId
+      },success:function(res){
+        $("#SubCategoryId").html(res)
+      }
+    })
+  }
+</script>

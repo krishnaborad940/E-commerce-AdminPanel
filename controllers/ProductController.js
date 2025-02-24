@@ -26,8 +26,6 @@ return res.render('Products/AddProduct',{categoryData,SubCategoryData,ExtraCateg
 
 module.exports.insertProducts=async(req,res)=>{
     try{
-        // console.log(req.body)
-        // console.log(req.file)
         let newImg='';
         if(req.file){
             newImg=await Product.ImgPath+"/"+req.file.filename
@@ -51,10 +49,46 @@ module.exports.insertProducts=async(req,res)=>{
 
 module.exports.ViewProduct=async(req,res)=>{
 
-    let viewProductData=await Product.find().populate('categoryId').
-        populate('SubCategoryId').populate('ExtraCategoryId').populate('TypesCategoryId').populate('BrandCategoryId').exec();
+    let serach='';
+if(req.query.productSerach){
+    serach=req.query.productSerach
+}
 
-    return res.render("Products/ViewProduct",{viewProductData})
+let page=0;
+let per_page=3;
+if(req.query.page){
+    page=req.query.page;
+}
+
+
+    let viewProductData=await Product.find({
+        $or:[
+            {title:{$regex:serach}},
+            {categoryData:{$regex:serach,$options: "i"}},
+            {subCategory:{$regex:serach}},
+            {ExtraCategory:{$regex:serach}},
+            {TypesCategory:{$regex:serach}},
+            {brand:{$regex:serach}},
+            {price:{$regex:serach}},
+        ]
+    }).skip(page*per_page).limit(per_page).populate('categoryId').
+        populate('SubCategoryId').populate('ExtraCategoryId').populate('TypesCategoryId').populate('BrandCategoryId').exec()
+
+        let viewProductDataRecord=await Product.find({
+            $or:[
+                {title:{$regex:serach}},
+                {categoryData:{$regex:serach,$options: "i"}},
+                {subCategory:{$regex:serach}},
+                {ExtraCategory:{$regex:serach}},
+                {TypesCategory:{$regex:serach}},
+                {brand:{$regex:serach}},
+                {price:{$regex:serach}},
+            ]
+        }).countDocuments();
+    
+        let totalData=Math.ceil(viewProductDataRecord/per_page)
+
+    return res.render("Products/ViewProduct",{viewProductData,serach,page,totalData})
 }
 
 module.exports.deleteProduct=async(req,res)=>{
@@ -91,14 +125,64 @@ module.exports.deleteProduct=async(req,res)=>{
 
 module.exports.UpdateProduct=async(req,res)=>{
     try{
-        console.log(req.query.updateId)
-        let updatePro=await Product.findById(req.query.updateId)
+    let updateId=req.params.id;
+        let updatePro=await Product.findById(updateId)
         let categoryData=await Category.find()
         let SubCategoryData=await SubCategory.find()
         let ExtraCategoryData=await ExtraCategory.find()
         let TypeCategoryData=await Types.find()
         let BrandData=await Brand.find()
         return res.render('Products/UpdateProduct',{updatePro,categoryData,SubCategoryData,ExtraCategoryData,TypeCategoryData,BrandData})
+    }catch(err){
+        console.log("somthing went wrong")
+        return res.redirect('back')
+    }
+}
+
+module.exports.Editroducts=async(req,res)=>{
+    try{
+// console.log(req.body)
+// console.log(req.file)
+
+if(req.file){
+    let singledata=await Product.findById(req.body.editid);
+    // console.log(singledata)
+    if(singledata){
+        try{
+            let oldImg= path.join(__dirname,'..',singledata.Image)
+            fs.unlinkSync(oldImg);
+        }catch(err){
+            console.log("image is not found")
+        }
+        let newImg=await Product.ImgPath+'/'+req.file.filename
+        req.body.Image=newImg;
+        let updateData=await Product.findByIdAndUpdate(req.body.editid,req.body)
+        console.log(updateData)
+        if(updateData){
+            console.log("data updated succesfully")
+            return res.redirect('/Products/ViewProduct')
+        }else{
+            console.log("data not updated")
+            return res.redirect('back')
+        }
+       }else{
+        console.log("data not found")
+        return res.redirect('back')
+       }
+}
+else{
+    let singledata=await Product.findById(req.body.editid);
+    req.body.Image=singledata.Image;
+    let updateData=await Product.findByIdAndUpdate(req.body.editid,req.body)
+    if(updateData){
+        console.log("data updated succesfully")
+        return res.redirect('/Products/ViewProduct')
+    }else{
+        console.log("data not updated")
+        return res.redirect('back')
+    }
+
+}
     }catch(err){
         console.log("somthing went wrong")
         return res.redirect('back')

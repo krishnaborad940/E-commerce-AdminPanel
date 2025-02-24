@@ -75,8 +75,43 @@
         margin: 5px;
         font-size: 14px;
         padding: 5px 10px;
-    }
+    }/* Pagination Buttons */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.pagination button:hover {
+    background: #0056b3;
+}
+
+.pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
     </style>
+    <div style="text-align:center;margin-top: 20px; display: flex; justify-content: center;align-items: center;">
+        <form action="">
+            <input type="text" name="productSerach" value="<%= serach %>" placeholder="search">
+             <input type="submit" value="submit" class="btn btn-success">
+        </form>
+        <a href="/Products/ViewProduct" style="margin-left: 10px;margin-top: -10px;" class="btn btn-danger">reset</a>
+         </div>
 <div class="container">
     <h2 class="text-center text-primary mt-4">Product List</h2>
     <div class="product-container">
@@ -93,12 +128,42 @@
                 <h5 class="price">Price:₹<%= v.price %></h5>
                 <p class="old-price">old-price:<del>₹<%= v.oldPrice %></del></p>
                 <div class="product-actions">
-                    <a href="/Products/UpdateProduct/?updateId<%= v.id %>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Products/UpdateProduct/<%= v.id %>" class="btn btn-warning btn-sm">Edit</a>
                     <a href="/Products/deleteProduct/?delId=<%= v.id %>" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             </div>
-        <% }) %>
-    </div>
+        <% }) %> </div>
+
+        
+
+             
+        <div class="pagination" style="margin: 30px 0;">
+            <% if (parseInt(page) > 0) { %>  
+                <a href="/Products/ViewProduct?page=<%= parseInt(page)-1 %>">
+                    <button>Prev</button>
+                </a>
+            <% } else { %>
+                <button disabled>Prev</button>
+            <% } %>
+        
+            <span>Page <%= parseInt(page) + 1 %></span>
+        
+            <% if (parseInt(page) < totalData - 1) { %>  
+                <a href="/Products/ViewProduct?page=<%= parseInt(page)+1 %>">
+                    <button>Next</button>
+                </a>
+            <% } else { %>
+                <button disabled>Next</button>
+            <% } %>
+        </div>
+        
+           
+    
+       
+   
+
+
+    
 </div>
 
 

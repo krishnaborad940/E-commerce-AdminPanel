@@ -19,7 +19,7 @@
                     <!-- category -->
                     <label for="exampleInputname" class="form-label">category Name</label>
              
-                    <select name="categoryId" id="">
+                    <select  id="categoryId"  onchange="return getsextraCategory()">
                      <option value="">--select category--</option>
                      <% categoryData.map((v,i)=>{ %> 
                        <option value="<%= v.id %>"><%= v.category %></option>
@@ -30,7 +30,7 @@
                     <label for="exampleInputname" class="form-label">sub category Name</label>
                     
               
-                    <select name="SubCategoryId" id="">
+                    <select id="SubCategoryId" onchange="return getsextraCategory()" >
                      <option value="">--select category--</option>
                      <% subcategoryData.map((v,i)=>{ %> 
                        <option value="<%= v.id %>"><%= v.subCategory %></option>
@@ -40,7 +40,7 @@
                 <!-- Name -->
                 <h5 class="mt-3">Enter Extra Category</h5>
                 <fieldset class="form-group">
-                  <input type="text" placeholder="Enter your Name" name="ExtraCategory" class="form-control" />
+                  <input type="text" placeholder="Enter your Name" name="ExtraCategory" id="ExtraCategoryId" class="form-control" />
                 </fieldset>
                 <!-- Submit Button -->
                 <fieldset class="form-group text-center">
@@ -55,3 +55,21 @@
     
 </body>
 </html>
+
+<script>
+  function getsextraCategory(){
+    let catId=document.getElementById('categoryId').value
+    let subcatId=document.getElementById('SubCategoryId').value
+
+    $.ajax({
+      url:'/ExtraCategory/',
+      method:"POST",
+      data:{
+        categoryId:catId,
+        SubCategoryId:subcatId
+      },success:function(res){
+        $("#ExtraCategoryId").html(res)
+      }
+    })
+  }
+</script>

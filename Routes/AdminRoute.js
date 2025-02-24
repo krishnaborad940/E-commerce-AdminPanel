@@ -5,6 +5,7 @@ const adminCtl=require('../controllers/AdminController')
 const Admin=require('../Models/adminModel');
 const passport = require('../config/passport-local-stratergy');
 
+
 router.get('/dashbord', passport.checkAuthUser,adminCtl.dashbord);
 
 router.get('/form', passport.checkAuthUser,adminCtl.form)
@@ -20,7 +21,7 @@ router.post('/EditAdmin',Admin.UploadImage,adminCtl.EditAdmin)
 
 router.get('/MyProfile', passport.checkAuthUser,adminCtl.MyProfile)
 
-router.get('/',adminCtl.Login)
+router.get('/Login',adminCtl.Login)
 
 router.post('/loginAdmin',passport.authenticate('local',{failureRedirect:'/dashbord'}),adminCtl.loginAdmin)
 
@@ -57,6 +58,8 @@ router.use('/ExtraCategory',require('../Routes/ExtraCategoryRouter'))
 
 router.use('/Types',require('../Routes/TypesRoutes'))
 router.use('/Brand',require('../Routes/BrandRoutes'))
+router.use('/',require('../Routes/userpanel'))
+
 
 router.use('/Products',require('../Routes/ProductRoutes'))
 

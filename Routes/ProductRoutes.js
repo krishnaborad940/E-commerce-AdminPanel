@@ -14,7 +14,9 @@ routes.get('/ViewProduct',passport.checkAuthUser,productCtl.ViewProduct)
 
 routes.get('/deleteProduct',productCtl.deleteProduct)
 
-routes.get('/UpdateProduct',passport.checkAuthUser,productCtl.UpdateProduct)
+routes.get('/UpdateProduct/:id',passport.checkAuthUser,productCtl.UpdateProduct)
+
+routes.post('/Editroducts',Product.uploadImage,productCtl.Editroducts)
 
 
 
